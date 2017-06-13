@@ -8,14 +8,16 @@ import java.time.ZoneOffset
 import java.util.*
 
 /**
+ * 测试时间计算
  * Created by jonas on 2017/4/17.
  */
 fun main(args: Array<String>) {
-    val a = System.currentTimeMillis();
+    val a = System.currentTimeMillis()
     val b = getTimeMillis("00:00:01")
     val time = a - b
     println(Date(a))
     println(Date(b))
+    @Suppress("DEPRECATION")
     println(Timestamp(time).minutes)
 
     val c = LocalDateTime.now()
@@ -28,9 +30,33 @@ fun main(args: Array<String>) {
             .toInstant(ZoneOffset.ofHours(8))
             .toEpochMilli()
 
-    println(d)
-    println(b)
-    println(c)
+    val e = c
+            .toInstant(ZoneOffset.UTC)
+            .toEpochMilli()
+
+//    val f = LocalDateTime.now()
+//            .atOffset(ZoneOffset.UTC)
+//            .withHour(0)
+//            .withMinute(0)
+//            .withSecond(1)
+//            .withNano(0)
+//            .toEpochSecond()
+
+    val g = LocalDateTime.now()
+            .atOffset(ZoneOffset.UTC)
+            .withHour(0)
+            .withMinute(0)
+            .withSecond(1)
+            .withNano(0)
+            .toInstant()
+            .toEpochMilli()
+
+    println("b = $b")
+    println("c = $c")
+    println("d = $d")
+    println("e = $e")
+//    println("f = $f")
+    println("g = $g")
 }
 
 private fun getTimeMillis(time: String): Long {
