@@ -57,6 +57,10 @@ fun main(args: Array<String>) {
     println("e = $e")
 //    println("f = $f")
     println("g = $g")
+
+    val h = LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli()
+
+    println("h = $h")
 }
 
 private fun getTimeMillis(time: String): Long {
