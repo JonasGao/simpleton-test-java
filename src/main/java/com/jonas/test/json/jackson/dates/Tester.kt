@@ -2,6 +2,7 @@ package com.jonas.test.json.jackson.dates
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import java.sql.Timestamp
 import java.time.Instant
 import java.time.LocalDateTime
@@ -26,8 +27,7 @@ fun main1(args: Array<String>) {
 
 fun main(args: Array<String>) {
     val json = """{"created":"2017-03-31 14:54:51"}"""
-    val objectMapper = ObjectMapper()
-    val model = objectMapper.readValue(json, Model1::class.java)
+    val model = jacksonObjectMapper().readValue(json, Model1::class.java)
     println(model.created)
 
 //    for (zone in TimeZone.getAvailableIDs(0)) {
@@ -38,13 +38,13 @@ fun main(args: Array<String>) {
 class Model1 {
 
     @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd hh:mm:ss", timezone = "UTC")
-    var created: Date? = null;
+    var created: Date? = null
 }
 
 class Model2 {
-    var created: Timestamp? = null;
+    var created: Timestamp? = null
 }
 
 class Model3 {
-    var created: Instant? = null;
+    var created: Instant? = null
 }

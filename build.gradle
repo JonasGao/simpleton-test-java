@@ -27,6 +27,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc
     compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.3'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.7"
     compile 'commons-beanutils:commons-beanutils:1.9.3'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     testCompile 'junit:junit:4.11'
